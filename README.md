@@ -15,10 +15,12 @@ sudo apt-get install python3 python3-pip python3-setuptools python3-wheel ninja-
 ```
 
 ### Install Meson
+Install as a local user (recommended):
 ```bash
-# Install as a local user (recommended):
 pip3 install --user meson
-# Install as root:
+```
+Install as root:
+```bash
 sudo pip3 install meson
 ```
 
