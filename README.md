@@ -1,4 +1,34 @@
-# Building
+# Gnome Monitor Config on Wayland
+On Wayland, screen rotation is typically handled differently than on Xorg due to the differences in architecture and design between the two display servers. Wayland does not directly support screen rotation through tools like xrandr as Xorg does. This approuch is used for screen rotation on Wayland using the command line.
+
+Run the following command to check the session type:
+```bash
+echo $XDG_SESSION_TYPE
+# Output: wayland
+```
+
+## Install Dependencies
+
+### Install Python 3 & Ninja
+```bash
+sudo apt-get install python3 python3-pip python3-setuptools python3-wheel ninja-build
+```
+
+### Install Meson
+```bash
+# Install as a local user (recommended):
+pip3 install --user meson
+# Install as root:
+sudo pip3 install meson
+```
+
+### Install build dependencies
+```bash
+# Related errors: src/meson.build:3:8: ERROR: Dependency lookup for cairo with method 'pkgconfig' failed: Pkg-config for machine host machine not found. Giving up.
+sudo apt-get install libcairo2-dev libjpeg-dev libgif-dev
+```
+
+## Build
 
 The following steps can be used to build `gnome-monitor-config`
 
@@ -10,11 +40,12 @@ $ meson compile
 
 The output binary can be found in `build/src/gnome-monitor-config`.
 
-# Usage
+## Usage
 
 For usage details, run
 
 ```shell
+# Path: gnome-monitor-config/build/src/gnome-monitor-config
 $ ./gnome-monitor-config --help
 
 Usage: ./src/gnome-monitor-config [OPTIONS...] COMMAND [COMMAND OPTIONS...]
