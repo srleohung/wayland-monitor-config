@@ -74,6 +74,11 @@ Options for 'set':
  --physical-layout-mode      Set physical layout mode
 ```
 
+When running this as a service or crontab script, it may be necessary to:
+```bash
+export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u)/bus
+```
+
 ## Single-Monitor configuration
 
 Start with `gnome-monitor-config list` to get a list of available monitors and configurations.
